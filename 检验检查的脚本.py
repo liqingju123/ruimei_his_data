@@ -137,19 +137,19 @@ def qeryLabElementRslt(cursor,reportid):
     postLisData2Saas(data)
     return data
 
-while True :
-    try:
-        #sleep(60*3) # 保证服务器先启动
-        conn = pymssql.connect(host= '127.0.0.1',port='1577',user='sa',password='ljhy2016',database='rmlis6',charset="utf8")
-        cursor = conn.cursor()
-        print 'conn  session'
-        break
-    except Exception as err:
-        print 'conn not session'
-        sleep(10)
 
 
 if __name__ =='__main__':
+    while True :
+        try:
+            #sleep(60*3) # 保证服务器先启动
+            conn = pymssql.connect(host= '127.0.0.1',port='1577',user='sa',password='ljhy2016',database='rmlis6',charset="utf8")
+            cursor = conn.cursor()
+            print 'conn  session'
+            break
+        except Exception as err:
+            print 'conn not session'
+            sleep(10)
     while True:
         qeryLabElementRsltNoRe(cursor)
         sleep(2)
