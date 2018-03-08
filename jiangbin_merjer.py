@@ -3,6 +3,8 @@
 
 import socket
 import  BC5000DataFromart
+import jiangbin_log
+
 
 # 接收信息
 def recv_basic(the_socket):
@@ -10,6 +12,7 @@ def recv_basic(the_socket):
     while True:
         data = the_socket.recv(1024) 
         if not data: 
+            jiangbin_log.write_jiancha_info(str_total)
             BC5000DataFromart.txt_2_data(str_total) # 格式处理并且上传到服务器
             print str_total
             str_total =''  
@@ -25,5 +28,8 @@ def connect_mid():
     recv_basic(s)
     s.close() 
 
-if __name__ =='__main__':   
+
+
+if __name__ =='__main__': 
+    jiangbin_log.mkdir_log_path()      
     connect_mid()
